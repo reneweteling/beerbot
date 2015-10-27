@@ -1,0 +1,15 @@
+default: &default
+  adapter: postgresql
+  host: localhost
+
+development:
+  <<: *default
+  database: "beerbot_dev"
+
+test:
+  <<: *default
+  database: "beerbot_dev"
+
+production:
+  <<: *default
+  database: "beerbot"

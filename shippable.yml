@@ -1,0 +1,7 @@
+# http://docs.shippable.com/languages/#ruby
+
+# language setting
+language: ruby
+
+# version numbers
+rvm: 2.2.2
