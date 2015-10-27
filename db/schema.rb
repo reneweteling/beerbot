@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20151022062255) do
     t.string   "last_name"
     t.string   "slack_username"
     t.integer  "role"
+    t.integer  "beer_consumed",      default: 0,  null: false
+    t.integer  "beer_bought",        default: 0,  null: false
+    t.integer  "beer_total",         default: 0,  null: false
     t.string   "email",              default: "", null: false
     t.string   "encrypted_password", default: "", null: false
     t.datetime "created_at",                      null: false

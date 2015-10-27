@@ -5,6 +5,10 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :last_name
       t.string :slack_username
       t.integer :role 
+
+      t.integer :beer_consumed, null: false, default: 0
+      t.integer :beer_bought, null: false, default: 0
+      t.integer :beer_total, null: false, default: 0
       
       ## Database authenticatable
       t.string :email,              null: false, default: ""
