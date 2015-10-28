@@ -19,10 +19,12 @@ gem 'sprockets-coffee-react', '~> 3.0.1'
 gem 'bower-rails', '~> 0.9.2'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
+  gem 'rails-assets-react-router'
   gem 'rails-assets-fluxxor'
 end
 
 group :development do
+  gem 'guard-livereload', '~> 2.4', require: false
   gem 'xray-rails'
   gem 'byebug'
   gem 'spring'
