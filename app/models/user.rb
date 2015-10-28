@@ -4,6 +4,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable
   has_many :beers
 
+  def to_s
+    first_name
+  end
+
   def update_counters
     self.beer_bought = beers.bought.sum(:amount)
     self.beer_consumed = -1 * beers.consumed.sum(:amount)

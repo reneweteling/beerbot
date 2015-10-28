@@ -22,6 +22,7 @@ BeerStore = Fluxxor.createStore
     @emit 'change'
 
   drinkBeer: (payload, type) ->
+    window.audio_beer.play()
     payload.amount = payload.amount * -1 if type == constants.BUY_BEER
     self = @
     $.post "/beers", { beer: {user_id: payload.user.id, amount: payload.amount} }, (data) ->
@@ -50,7 +51,7 @@ Application = React.createClass
     flux.store('BeerStore').getState()
 
   handleClick: ->
-    @.transitionTo 'beers'
+    @transitionTo 'beers'
 
   render: ->
     users = @state.users
@@ -60,7 +61,7 @@ Application = React.createClass
           <th>User</th>
           <th>Consumed</th>
           <th>Bought</th>
-          <th>total</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
@@ -92,6 +93,7 @@ Beers = React.createClass
     self = @
     users = @state.users
     <div className="beers">
+      <h1 className="text-center">Drink some beer!!</h1>
       {
         Object.keys(users).map (i) ->
           user = users[i]

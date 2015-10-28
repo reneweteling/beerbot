@@ -1,7 +1,10 @@
 class BeersController < ApplicationController
   
+  def home
+  end
+
   def index
-    render json: User.all
+    render json: User.order(:first_name)
   end
 
   def create
@@ -9,7 +12,7 @@ class BeersController < ApplicationController
     params[:creator] = User.first
     
     Beer.create! params
-    render json: User.all
+    render json: User.order(:first_name)
   end
 
   private
