@@ -7,13 +7,16 @@ And you guessed it. Its an SPA to count to keep track of those pesky beers. They
 
 #### Must have's
 * [ ] Stick cable thing on wall, adapter is ugly
+* [ ] Implement CircleCi
+* [ ] Write tests
+* [ ] Automaticly deploy to heroku-dev if tests pass
 * [ ] Remove basic auth
 * [ ] Authenticate SPA ( place behind login )
 * [ ] Add fastclick
 * [ ] Add a bought page ( add per 6 or per 24 )
 * [ ] Add a polling mechanism that checks the sha1 to see if there is a change, if so update the store and play the bottle sound
 * [ ] Deploy somewhere
-    * Add Mina
+    * [ ] Add Mina
 
 #### Nice to have's
 * [ ] Make it pretty HELP!!!! i suck ballz at this

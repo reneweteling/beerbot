@@ -1,0 +1,7 @@
+machine:
+  environment:
+deployment:
+  staging:
+    branch: master
+    heroku:
+      appname: beerbot-dev
