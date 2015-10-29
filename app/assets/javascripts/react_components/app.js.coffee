@@ -22,6 +22,7 @@ BeerStore = Fluxxor.createStore
     @emit 'change'
 
   drinkBeer: (payload, type) ->
+    window.audio_beer.load()
     window.audio_beer.play()
     payload.amount = payload.amount * -1 if type == constants.BUY_BEER
     self = @
