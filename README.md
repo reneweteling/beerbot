@@ -10,9 +10,9 @@ And you guessed it. Its an SPA to count to keep track of those pesky beers. They
 * [x] Implement CircleCi
 * [ ] Write tests
 * [x] Automaticly deploy to heroku-dev if tests pass
-* [ ] Remove basic auth
-* [ ] Authenticate SPA ( place behind login )
-* [ ] Add fastclick
+* [x] Remove basic auth
+* [x] Authenticate SPA ( place behind login )
+* [x] Add fastclick or chrome header
 * [ ] Add a bought page ( add per 6 or per 24 )
 * [ ] Add a polling mechanism that checks the sha1 to see if there is a change, if so update the store and play the bottle sound
 * [ ] Deploy somewhere
@@ -35,8 +35,6 @@ And you guessed it. Its an SPA to count to keep track of those pesky beers. They
 
 #### Credentials dev environment
 
-* basic auth
-    * beer / beer
 * admin
     * rene@weteling.com / password
 
