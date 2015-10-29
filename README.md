@@ -3,6 +3,24 @@
 Beerbot is a simple Rails backend mainly with the ActiveAdmin gem, and a small json resource to power the fluxxor/react frontend.
 And you guessed it. Its an SPA to count to keep track of those pesky beers. They just seem to vaporise dont they. 
 
+## Todo
+
+#### Must have's
+* [ ] Stick cable thing on wall, adapter is ugly
+* [ ] Remove basic auth
+* [ ] Authenticate SPA ( place behind login )
+* [ ] Add fastclick
+* [ ] Add a bought page ( add per 6 or per 24 )
+* [ ] Add a polling mechanism that checks the sha1 to see if there is a change, if so update the store and play the bottle sound
+* [ ] Deploy somewhere
+    * Add Mina
+
+#### Nice to have's
+* [ ] Make it pretty HELP!!!! i suck ballz at this
+* [ ] Add slack bot integration ( project already ready on laptop Rene )
+* [ ] Add wise ass slack responses ( maybe check if there is a wise ass funny API or canned responses database )
+* [ ] Only add beer though slack if the user is singed in to the building ( link with Joris his API )
+
 ## Usage
 
 * clone repo
@@ -11,6 +29,13 @@ And you guessed it. Its an SPA to count to keep track of those pesky beers. They
 * bin/rails s
 * go to http://localhost:3000 for the SPA
 * go to http://localhost:3000/admin for the admin interface
+
+#### Credentials dev environment
+
+* basic auth
+    * beer / beer
+* admin
+    * rene@weteling.com / password
 
 ## Contributing
 

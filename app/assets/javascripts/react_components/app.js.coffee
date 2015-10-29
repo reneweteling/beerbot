@@ -88,7 +88,7 @@ Beers = React.createClass
 
   drinkBeer: (user) ->
     @getFlux().actions.drinkBeer(user, 1)
-    @.transitionTo 'home'
+    @transitionTo 'home'
 
   render: ->
     self = @
