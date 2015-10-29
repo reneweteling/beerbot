@@ -1,4 +1,4 @@
-# Beerbot
+# Beerbot [![Circle CI](https://circleci.com/gh/reneweteling/beerbot.svg?style=svg)](https://circleci.com/gh/reneweteling/beerbot)
 
 Beerbot is a simple Rails backend mainly with the ActiveAdmin gem, and a small json resource to power the fluxxor/react frontend.
 And you guessed it. Its an SPA to count to keep track of those pesky beers. They just seem to vaporise dont they. 
@@ -7,9 +7,9 @@ And you guessed it. Its an SPA to count to keep track of those pesky beers. They
 
 #### Must have's
 * [ ] Stick cable thing on wall, adapter is ugly
-* [ ] Implement CircleCi
+* [x] Implement CircleCi
 * [ ] Write tests
-* [ ] Automaticly deploy to heroku-dev if tests pass
+* [x] Automaticly deploy to heroku-dev if tests pass
 * [ ] Remove basic auth
 * [ ] Authenticate SPA ( place behind login )
 * [ ] Add fastclick
