@@ -1,6 +1,6 @@
 if Rails.env.development?
 
-  rene = User.create!(first_name: 'René', email: 'rene@weteling.com', password: 'password', password_confirmation: 'password')
+  User.create!(first_name: 'René', email: 'rene@weteling.com', password: 'password', password_confirmation: 'password')
   User.create!(first_name: 'Emile', email: 'emile@me.com', password: 'password', password_confirmation: 'password')
   User.create!(first_name: 'Thijs', email: 'thijs@me.com', password: 'password', password_confirmation: 'password')
   User.create!(first_name: 'Bas', email: 'bas@me.com', password: 'password', password_confirmation: 'password')
@@ -15,13 +15,13 @@ if Rails.env.development?
 
   User.all.each do |u|
     10.times do
-      u.beers.create!(amount: rand(-5..6), creator: rene)
+      u.beers.create!(amount: rand(-5..6), creator_id: 1)
     end
   end
 
 else
 
-  pass = SecureRandom.hex(6)
+  pass = SecureRandom.hex(8)
   User.create!(first_name: 'René', last_name: 'Weteling', email: 'rene@weteling.com', password: pass, password_confirmation: pass)
   puts "\n\n\n\n\nPassword: #{pass}\n\n\n"
 
