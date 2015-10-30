@@ -23,5 +23,6 @@ else
 
   pass = SecureRandom.hex(6)
   User.create!(first_name: 'René', last_name: 'Weteling', email: 'rene@weteling.com', password: pass, password_confirmation: pass)
-  
+  puts "\n\n\n\n\nPassword: #{pass}\n\n\n"
+
 end
