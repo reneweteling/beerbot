@@ -52,7 +52,7 @@ Application = React.createClass
     flux.store('BeerStore').getState()
 
   handleClick: ->
-    @transitionTo 'beers'
+    @transitionTo 'drinking'
 
   render: ->
     users = @state.users
@@ -79,6 +79,46 @@ Application = React.createClass
       </tbody>
     </table>
   
+
+DrinkBeer = React.createClass
+  mixins: [ReactRouter.Navigation, FluxMixin]
+
+  handleClick: (user) ->
+    @getFlux().actions.drinkBeer(user, 1)
+    @transitionTo 'home'
+  
+  render: ->
+    users = @props.users
+    self = @
+    <div>
+      <h1 className="text-center">Keep on pooring!</h1>
+      {
+        Object.keys(users).map (i) ->
+          user = users[i]
+          <button className="btn btn-info btn-lg" key={i} type="submit" onClick={self.handleClick.bind(self, user)} >{user.first_name}</button>
+      }
+    </div>
+
+BuyBeer = React.createClass
+  mixins: [ReactRouter.Navigation, FluxMixin]
+
+  handleClick: (user) ->
+    @getFlux().actions.drinkBeer(user, -6)
+    @transitionTo 'home'
+  
+  render: ->
+    users = @props.users
+    self = @
+
+    <div>
+      <h1 className="text-center">Thanks mate! So nice!! You buy 6 at a time!</h1>
+      {
+        Object.keys(users).map (i) ->
+          user = users[i]
+          <button className="btn btn-success btn-lg" key={i} type="submit" onClick={self.handleClick.bind(self, user)} >{user.first_name}</button>
+      }
+    </div>
+
 Beers = React.createClass
   mixins: [ReactRouter.Navigation, FluxMixin, StoreWatchMixin("BeerStore")]
 
@@ -86,26 +126,38 @@ Beers = React.createClass
     flux = @getFlux()
     flux.store('BeerStore').getState()
 
-  drinkBeer: (user) ->
+  addbeer: (user) ->
     @getFlux().actions.drinkBeer(user, 1)
     @transitionTo 'home'
 
+  drinking: ->
+    /drinking/.test @context.router.getCurrentPathname()
+
   render: ->
-    self = @
-    users = @state.users
-    <div className="beers">
-      <h1 className="text-center">Drink some beer!!</h1>
-      {
-        Object.keys(users).map (i) ->
-          user = users[i]
-          <button className="btn btn-info btn-lg" key={i} type="submit" onClick={self.drinkBeer.bind(self, user)}  >{user.first_name}</button>
-      }
+    drinking = @drinking()
+    <div className={ if drinking then 'beers drinking' else 'beers buying'  }>
+      <ul className="nav nav-tabs" role="tablist">
+        <li role="presentation" className={ if drinking then 'active'  }>
+          <a href="#drinking" >Drinking</a>
+        </li>
+        <li role="presentation" className={ unless drinking then 'active' }>
+          <a href="#buying">Buying</a>
+        </li>
+        <li role="presentation">
+          <a href="#">Overview</a>
+        </li>
+      </ul>
+      { if drinking then <DrinkBeer users={ @state.users } /> else <BuyBeer users={ @state.users } /> }
     </div>
+
+
+
 
 # Routes
 routes = <ReactRouter.Route>
   <ReactRouter.Route handler={Application} name="home" path="/" />
-  <ReactRouter.Route handler={Beers} name="beers" path="beers" />
+  <ReactRouter.Route handler={Beers} name="drinking" path="drinking" />
+  <ReactRouter.Route handler={Beers} name="buying" path="buying" />
 </ReactRouter.Route>
 
 $ ->
