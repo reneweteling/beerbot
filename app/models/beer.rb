@@ -8,7 +8,16 @@ class Beer < ActiveRecord::Base
   scope :bought, -> { where("amount > 0") }
   scope :consumed, -> { where("amount < 0") }
 
+  after_create :track
+
   def update_user_counters
     user.update_counters
   end
+
+  private
+
+  def track
+    Appsignal.increment_counter 'beers'
+  end
+
 end
