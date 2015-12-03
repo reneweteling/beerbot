@@ -17,7 +17,7 @@ class Beer < ActiveRecord::Base
   private
 
   def track
-    Appsignal.increment_counter 'beers'
+    Appsignal.increment_counter 'beers', 1
   end
 
 end
