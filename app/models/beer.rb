@@ -17,7 +17,8 @@ class Beer < ActiveRecord::Base
   private
 
   def track
-    Appsignal.increment_counter 'beers', 1
+    Appsignal.increment_counter 'beers', amount if amount < 0
+    Appsignal.increment_counter 'bought', amount if amount > 0
   end
 
 end
