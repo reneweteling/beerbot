@@ -184,8 +184,11 @@ GEM
       sprockets-rails
     rails-assets-bootstrap-sass (3.3.5)
       rails-assets-jquery (>= 1.9.0)
+    rails-assets-d3 (3.5.5)
     rails-assets-fluxxor (1.7.3)
     rails-assets-jquery (2.1.4)
+    rails-assets-react-d3-components (3.5.5)
+      rails-assets-d3 (= 3.5.5)
     rails-assets-react-router (0.13.4)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
@@ -290,7 +293,9 @@ DEPENDENCIES
   quiet_assets
   rails (= 4.2.4)
   rails-assets-bootstrap-sass!
+  rails-assets-d3!
   rails-assets-fluxxor!
+  rails-assets-react-d3-components!
   rails-assets-react-router!
   rails_12factor
   react-rails (~> 1.0.0)

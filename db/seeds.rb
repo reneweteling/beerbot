@@ -14,8 +14,8 @@ if Rails.env.development?
   User.create!(first_name: 'Pieter-jan', email: 'pj@me.com', password: 'password', password_confirmation: 'password')
 
   User.all.each do |u|
-    10.times do
-      u.beers.create!(amount: rand(-5..6), creator_id: 1)
+    50.times do
+      u.beers.create!(amount: rand(-5..6), creator_id: 1, created_at: Time.at(Time.zone.now.to_i - rand(0..60).days))
     end
   end
 

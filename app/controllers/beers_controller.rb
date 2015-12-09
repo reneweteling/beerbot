@@ -4,7 +4,12 @@ class BeersController < ApplicationController
   end
 
   def index
-    render json: User.order(:first_name)
+    stats = Beer.bought.joins(:user)
+      .select("users.first_name, SUM(beers.amount) as total, DATE(beers.created_at)")
+      .group("users.first_name, DATE(beers.created_at)")
+      .order("DATE(beers.created_at)")
+      
+    render json: { users: User.order(:first_name), stats: stats }
   end
 
   def create
@@ -12,7 +17,7 @@ class BeersController < ApplicationController
     params[:creator] = User.first
     
     Beer.create! params
-    render json: User.order(:first_name)
+    render action: :index
   end
 
   private

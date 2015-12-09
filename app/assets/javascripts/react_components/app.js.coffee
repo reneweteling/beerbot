@@ -7,6 +7,7 @@ constants =
 BeerStore = Fluxxor.createStore
   initialize: ->
     @users = {}
+    @stats = {}
     @getFromApi()
     @bindActions(constants.DRINK_BEER, @drinkBeer,
                  constants.BUY_BEER,   @drinkBeer)
@@ -14,11 +15,11 @@ BeerStore = Fluxxor.createStore
   getFromApi: ->
     self = @
     $.getJSON "/beers", (data) -> 
-      self.updateUsers data
+      self.updateData data
 
-  updateUsers: (users) ->
-    for u in users
-      @users[u.id] = u
+  updateData: (data) ->
+    @users = data.users
+    @stats = data.stats
     @emit 'change'
 
   drinkBeer: (payload, type) ->
@@ -27,10 +28,13 @@ BeerStore = Fluxxor.createStore
     payload.amount = payload.amount * -1 if type == constants.BUY_BEER
     self = @
     $.post "/beers", { beer: {user_id: payload.user.id, amount: payload.amount} }, (data) ->
-      self.updateUsers data      
+      self.updateData data      
     , "json"
   
-  getState: -> users: @users
+  getState: -> 
+    users: @users
+    stats: @stats
+
 
 # Semantic actions
 actions =
@@ -56,7 +60,7 @@ Application = React.createClass
 
   render: ->
     users = @state.users
-    <table className="table table-striped" onClick={this.handleClick}>
+    <table className="table table-striped table-condensed" onClick={this.handleClick}>
       <thead>
         <tr>
           <th>User</th>
@@ -91,7 +95,7 @@ DrinkBeer = React.createClass
     users = @props.users
     self = @
     <div>
-      <h1 className="text-center">Keep on pooring!</h1>
+      <h1 className="text-center">Keep on pouring!</h1>
       {
         Object.keys(users).map (i) ->
           user = users[i]
@@ -119,6 +123,48 @@ BuyBeer = React.createClass
       }
     </div>
 
+GraphBeer = React.createClass
+  mixins: [ReactRouter.Navigation, FluxMixin]
+  
+  render: ->
+    self = @
+    
+    stats = []
+    for n in @props.stats
+      if stats[n.date]
+        stats[n.date].values.push
+          x: n.first_name
+          y: n.total
+      else
+        stats[n.date] = 
+          label: n.date
+          values: [
+            x: n.first_name
+            y: n.total
+          ]
+
+    data = []
+    for k,v of stats
+      users = v.values.map (v) -> v.x
+      for user in @props.users
+        if users.indexOf(user.first_name) == -1
+          v.values.push
+            x: user.first_name
+            y: 0
+      data.push v
+      
+    if data.length > 0
+      console.log data
+      <ReactD3.BarChart
+        groupedBars
+        data={data}
+        width={600}
+        height={400}
+        margin={{top: 10, bottom: 50, left: 50, right: 10}} scale={1} />
+    else
+      <p>no data</p>
+
+
 Beers = React.createClass
   mixins: [ReactRouter.Navigation, FluxMixin, StoreWatchMixin("BeerStore")]
 
@@ -130,24 +176,33 @@ Beers = React.createClass
     @getFlux().actions.drinkBeer(user, 1)
     @transitionTo 'home'
 
-  drinking: ->
-    /drinking/.test @context.router.getCurrentPathname()
+  route: (route) ->
+    new RegExp(route, 'g').test @context.router.getCurrentPathname()
 
   render: ->
-    drinking = @drinking()
-    <div className={ if drinking then 'beers drinking' else 'beers buying'  }>
+    if @route('drinking')
+      content = <DrinkBeer users={ @state.users } /> 
+    else if @route('buying')
+      content = <BuyBeer users={ @state.users } /> 
+    else if @route('graphs')
+      content = <GraphBeer stats={ @state.stats } users={ @state.users } /> 
+    
+    <div className="beers #{@context.router.getCurrentPathname()}" >
       <ul className="nav nav-tabs" role="tablist">
-        <li role="presentation" className={ if drinking then 'active'  }>
+        <li role="presentation" className={ if @route('drinking') then 'active'  }>
           <a href="#drinking" >Drinking</a>
         </li>
-        <li role="presentation" className={ unless drinking then 'active' }>
+        <li role="presentation" className={ if @route('buying') then 'active' }>
           <a href="#buying">Buying</a>
+        </li>
+        <li role="presentation" className={ if @route('graphs') then 'active' }>
+          <a href="#graphs">Stats</a>
         </li>
         <li role="presentation">
           <a href="#">Overview</a>
         </li>
       </ul>
-      { if drinking then <DrinkBeer users={ @state.users } /> else <BuyBeer users={ @state.users } /> }
+      { content }
     </div>
 
 
@@ -158,6 +213,7 @@ routes = <ReactRouter.Route>
   <ReactRouter.Route handler={Application} name="home" path="/" />
   <ReactRouter.Route handler={Beers} name="drinking" path="drinking" />
   <ReactRouter.Route handler={Beers} name="buying" path="buying" />
+  <ReactRouter.Route handler={Beers} name="graphs" path="graphs" />
 </ReactRouter.Route>
 
 $ ->

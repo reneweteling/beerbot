@@ -3,5 +3,7 @@
 #= require react
 #= require react_ujs
 #= require react-router
+#= require d3
+#= require react-d3-components
 #= require fluxxor
 #= require_tree ./react_components

@@ -17,6 +17,7 @@ class Beer < ActiveRecord::Base
   private
 
   def track
+    return unless Rails.env.production?
     Appsignal.increment_counter 'beers', amount if amount < 0
     Appsignal.increment_counter 'bought', amount if amount > 0
   end
