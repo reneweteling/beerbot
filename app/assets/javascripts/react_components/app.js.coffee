@@ -60,7 +60,7 @@ Application = React.createClass
 
   render: ->
     users = @state.users
-    <table className="table table-striped table-condensed" onClick={this.handleClick}>
+    <table className="table table-striped table-condensed clickable" onClick={this.handleClick}>
       <thead>
         <tr>
           <th>User</th>
@@ -130,27 +130,29 @@ GraphBeer = React.createClass
     self = @
     
     stats = []
+    dates = []
     for n in @props.stats
-      if stats[n.date]
-        stats[n.date].values.push
-          x: n.first_name
+      dates.push
+      if stats[n.first_name]
+        stats[n.first_name].values.push
+          x: n.date
           y: n.total
       else
-        stats[n.date] = 
-          label: n.date
+        stats[n.first_name] = 
+          label: n.first_name
           values: [
-            x: n.first_name
+            x: n.date
             y: n.total
           ]
 
     data = []
     for k,v of stats
-      users = v.values.map (v) -> v.x
-      for user in @props.users
-        if users.indexOf(user.first_name) == -1
-          v.values.push
-            x: user.first_name
-            y: 0
+      # users = v.values.map (v) -> v.x
+      # for user in @props.users
+      #   if users.indexOf(user.first_name) == -1
+      #     v.values.push
+      #       x: user.first_name
+      #       y: 0
       data.push v
       
     if data.length > 0
