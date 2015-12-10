@@ -5,8 +5,8 @@ ActiveAdmin.register_page "Dashboard" do
   content title: proc{ I18n.t("active_admin.dashboard") } do
     div class: "blank_slate_container", id: "dashboard_default_message" do
       span class: "blank_slate" do
-        span "Beers consumed: #{Beer.consumed.count} bought: #{Beer.bought.count}"
-        h2 "There should be #{Beer.bought.count - Beer.consumed.count} in stock"
+        span "Beers consumed: #{Beer.consumed.sum(:amount) * -1} bought: #{Beer.bought.sum(:amount)}"
+        h2 "There should be #{Beer.sum(:amount)} in stock"
       end
     end
 
