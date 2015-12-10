@@ -14,4 +14,15 @@ ActiveAdmin.register Beer do
     actions
   end
 
+  csv do
+    column :amount
+    column :user do |row| 
+      row.user.to_s 
+    end
+    column :date, sortable: :created_at  do |col|
+      col.created_at.to_date
+    end
+    column :created_at
+  end
+
 end
