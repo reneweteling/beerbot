@@ -1,8 +1,7 @@
 class Stats
   def self.user
-
+    #  .where("created_at > ?", 30.days.ago)
     beer_by_date = Beer.bought.group("DATE(created_at), user_id")
-      .where("created_at > ?", 30.days.ago)
       .select("DATE(created_at) as date", :user_id, "SUM(amount) as amount")
       .order("DATE(created_at) asc")
 
@@ -22,16 +21,11 @@ class Stats
       beer_users = beer.collect{|b| b.user_id }
       users.each do |user|
         index = beer_users.index user.id
-        unless index.nil?
-          row << beer[index].amount
-          next
-        end
-        row << 0
+        row << if index.nil? then 0 else beer[index].amount end
       end
       data << row
     end
 
     data
-
   end
 end
