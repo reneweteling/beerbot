@@ -15,7 +15,7 @@ class Stats
       end
     end
 
-    users = User.order(:first_name).where('beer_total > ?', 0)
+    users = User.order(:first_name).where('beer_consumed > ?', 0)
     data = [ ['Datum'] + users.collect{|u| u.first_name } ]
     dates.each do |date, beer|
       row = [ date.strftime("%Y-%m-%d") ]
