@@ -8,4 +8,11 @@ html
     = javascript_include_tag 'application'
     = favicon_link_tag 'favicon.ico'
     = csrf_meta_tags
+    script type="text/javascript" src="https://www.google.com/jsapi?autoload={
+      'modules':[{
+        'name':'visualization',
+        'version':'1',
+        'packages':['corechart']
+      }]
+    }"
   body = yield

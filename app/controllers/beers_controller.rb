@@ -4,12 +4,7 @@ class BeersController < ApplicationController
   end
 
   def index
-    stats = Beer.bought.joins(:user)
-      .select("users.first_name, SUM(beers.amount) as total, DATE(beers.created_at)")
-      .group("users.first_name, DATE(beers.created_at)")
-      .order("DATE(beers.created_at)")
-      
-    render json: { users: User.order(:first_name), stats: stats }
+    render json: { users: User.order(:first_name), stats: Stats::user }
   end
 
   def create

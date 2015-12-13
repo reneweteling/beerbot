@@ -21,8 +21,6 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
   gem 'rails-assets-react-router'
   gem 'rails-assets-fluxxor'
-  gem 'rails-assets-d3'
-  gem 'rails-assets-react-d3-components'
 end
 
 group :development do

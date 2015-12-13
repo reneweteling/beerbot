@@ -125,47 +125,35 @@ BuyBeer = React.createClass
 
 GraphBeer = React.createClass
   mixins: [ReactRouter.Navigation, FluxMixin]
-  
-  render: ->
-    self = @
+
+  componentDidMount: ->
+    el      = React.findDOMNode(@refs.graph)
+    data    = google.visualization.arrayToDataTable(@props.stats)
+    options = 
+      legend:
+        position: 'top'
+        maxLines: 3
+        textStyle:
+          color: '#fff'
+      bar: 
+        groupWidth: '75%'
+      backgroundColor:
+        fill: 'transparent'
+      isStacked: true,
+      title: 'Beer consumption'
+      hAxis:
+        textStyle:
+          color: '#fff'
+      vAxis:
+        textStyle:
+          color: '#fff'
+
+    chart = new (google.visualization.ColumnChart)(el)
+    chart.draw data, options
     
-    stats = []
-    dates = []
-    for n in @props.stats
-      dates.push
-      if stats[n.first_name]
-        stats[n.first_name].values.push
-          x: n.date
-          y: n.total
-      else
-        stats[n.first_name] = 
-          label: n.first_name
-          values: [
-            x: n.date
-            y: n.total
-          ]
-
-    data = []
-    for k,v of stats
-      # users = v.values.map (v) -> v.x
-      # for user in @props.users
-      #   if users.indexOf(user.first_name) == -1
-      #     v.values.push
-      #       x: user.first_name
-      #       y: 0
-      data.push v
-      
-    if data.length > 0
-      console.log data
-      <ReactD3.BarChart
-        groupedBars
-        data={data}
-        width={600}
-        height={400}
-        margin={{top: 10, bottom: 50, left: 50, right: 10}} scale={1} />
-    else
-      <p>no data</p>
-
+  render: ->
+    <div ref="graph" className="graph">Loading....</div>
+    
 
 Beers = React.createClass
   mixins: [ReactRouter.Navigation, FluxMixin, StoreWatchMixin("BeerStore")]
