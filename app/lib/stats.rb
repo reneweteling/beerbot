@@ -1,6 +1,6 @@
 class Stats
   def self.user
-    beer_by_date = Beer.consumed.group("DATE(created_at), user_id").where("created_at > ?", 30.days.ago).select("DATE(created_at) as date", :user_id, "SUM(amount) as amount").order("DATE(created_at) asc")
+    beer_by_date = Beer.consumed.group("DATE(created_at), user_id").where("created_at > ?", 30.days.ago).select("DATE(created_at) as date", :user_id, "SUM(amount) * -1 as amount").order("DATE(created_at) asc")
 
     dates = {}
     beer_by_date.each do |b|
