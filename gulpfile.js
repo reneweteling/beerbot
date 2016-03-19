@@ -1,2 +1,2 @@
 require('coffee-script/register');  
-require('./z-app/gulpfile.coffee');  
+require('./app-frontend/gulpfile.coffee');  
