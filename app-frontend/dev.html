@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <meta name="description" content="">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta http-equiv="cleartype" content="on">
+
+    <!-- iPad and iPad mini (with @2× display) iOS ≥ 8 -->
+    <link rel="apple-touch-icon-precomposed" sizes="180x180" href="/app/assets/images/touch/icon-180x180.png">
+    <!-- iPad 3+ (with @2× display) iOS ≥ 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="/app/assets/images/touch/icon-152x152.png">
+    <!-- iPad (with @2× display) iOS ≤ 6 -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/app/assets/images/touch/icon-144x144.png">
+    <!-- iPhone (with @2× and @3 display) iOS ≥ 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="/app/assets/images/touch/icon-120x120.png">
+    <!-- iPhone (with @2× display) iOS ≤ 6 -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/app/assets/images/touch/icon-114x114.png">
+    <!-- iPad mini and the first- and second-generation iPad (@1× display) on iOS ≥ 7 -->
+    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="/app/assets/images/touch/icon-76x76.png">
+    <!-- iPad mini and the first- and second-generation iPad (@1× display) on iOS ≤ 6 -->
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/app/assets/images/touch/icon-72x72.png">
+    <!-- Android Stock Browser and non-Retina iPhone and iPod Touch -->
+    <link rel="apple-touch-icon-precomposed" href="/app/assets/images/touch/icon-57x57.png">
+    <!-- Fallback for everything else -->
+    <link rel="shortcut icon" href="/app/assets/images/touch/icon-57x57.png">
+
+    <!--
+        Chrome 31+ has home screen icon 192×192 (the recommended size for multiple resolutions).
+        If it’s not defined on that size it will take 128×128.
+    -->
+
+    <link rel="icon" type="image/png" sizes="16x16" href="/app/assets/images/touch/icon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/app/assets/images/touch/icon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/app/assets/images/touch/icon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/app/assets/images/touch/icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="128x128" href="/app/assets/images/touch/icon-128x128.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/app/assets/images/touch/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#222222">
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- For iOS web apps. Delete if not needed. https://github.com/h5bp/mobile-boilerplate/issues/94 -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Processapp">
+    
+    <title>Processapp</title>
+    <link href="/app/assets/app.css" rel="stylesheet">
+    <script>
+        var apiUrl = 'https://secure.weteling.com/api/v1/';
+    </script>
+    <script src="/app/assets/app.js"></script>
+  </head>
+  <body>
+    <script>
+      var script = document.createElement('script');
+      if(window.location.hostname == 'localhost'){
+        script.src = window.location.protocol + "//" + window.location.hostname + ":35729/livereload.js"    
+      }else{
+        script.src = "/livereload.js" 
+      }
+      document.getElementsByTagName('head')[0].appendChild(script);
+      
+      $(function(){
+        $(document).trigger('deviceready');  
+      })
+    </script>
+    <div id="app"></div>
+  </body>
+</html>

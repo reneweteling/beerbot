@@ -17,6 +17,7 @@ gem 'react-rails', '~> 1.0.0'
 gem 'sprockets-coffee-react', '~> 3.0.1'
 
 gem 'bower-rails', '~> 0.9.2'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
   gem 'rails-assets-react-router'

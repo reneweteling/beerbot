@@ -1,7 +1,22 @@
-machine:
-  environment:
 deployment:
-  staging:
+  accept:
+    branch: accept
+    heroku:
+      appname: horyon-accept
+  test:
     branch: master
     heroku:
-      appname: beerbot-dev
+      appname: horyon-test
+
+test:
+  override:
+    - bin/rspec
+    # - RAILS_ENV=test bin/rspec -r rspec_junit_formatter --format RspecJunitFormatter -o $CIRCLE_TEST_REPORTS/rspec/junit.xml
+
+machine:
+  environment:
+    GOOGLE_CLIENT_ID: 964157681780-97gqu4j2rkir1s045siitri3i3me1jti.apps.googleusercontent.com
+    GOOGLE_CLIENT_SECRET: 43q_qbLFfnQAFzAB_gpiV2R3
+    GOOGLE_ACCESS_TOKEN: ya29.aQK0_Q0gSoMAnyk7uCjMgTWcrfsgYX6XHNwvqjMp9dlzxwpzfJPMsTm2YMG-QexgvzdN
+    GOOGLE_REFRESH_TOKEN: 1/KTxtAWwUkE4ZjJW_K_QXNgV3RiIShCgXk-zuYVyjRMZIgOrJDtdun6zK6XiATCKT
+    GOOGLE_ROOT_FOLDER_ID: 0B2ZHvXJW13mPZnB2c3o4b0NSdmc    

@@ -1,0 +1,139 @@
+@import "../../app/assets/stylesheets/bootstrap/variables"
+
+$grid-float-breakpoint: 1000px
+
+@import "../../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap"
+@import "../../app/assets/stylesheets/bootstrap/bootswatch"
+@import "../../node_modules/react-select/scss/default"
+@import "signaturepad"
+
+
+$green: #65BF0F
+
+// Fasteclick
+html, body 
+  -webkit-tap-highlight-color: transparent
+  height: 100%
+
+// Navbar
+body 
+
+  background-image: url(images/background.jpg)
+  background-attachment: fixed
+  background-size: cover
+  padding-top: 66px
+  font-size: 14px
+  .container-fluid
+    h1, h2, h3, h4
+      margin-top: 5px
+    h1
+      font-size: 20px
+    h2
+      font-size: 18px
+    h3
+      font-size: 16px
+
+.navbar-collapse.collapsing
+  transition: none
+
+#app
+  height: 100%
+  
+  .fullHeight 
+    height: 100%
+
+  table
+    background-color: #fff
+
+  .btn, a 
+    transition: all 0.3s ease
+
+  .navbar
+    padding-top: 12px
+    transition: background-color 0.5s ease
+
+    &.offline
+      background-color: black
+    
+    .navbar-brand
+      font-size: 17px;
+      a
+        color: white
+
+    .nav
+      .li
+        a
+          font-size: 12px
+          padding: 10px
+        
+  .modal 
+    background-color: rgba(0,0,0,0.3)
+    text-align: center
+    padding: 0!important
+
+
+    &:before
+      content: ''
+      display: inline-block
+      height: 100%
+      vertical-align: middle
+      margin-right: -4px /* Adjusts for spacing */
+    
+
+    .modal-dialog
+      display: inline-block
+      text-align: left
+      vertical-align: middle
+
+        
+
+  .main-content
+  
+  footer
+    transition: all 0.3s ease
+    background-color: black
+    bottom: 0px
+    width: 100%
+    padding: 10px 10px 0 10px
+    position: fixed
+
+    &.closed
+      height: 0%
+      padding: 0px
+    
+    .progress
+      height: 26px
+      margin-bottom: 10px
+
+      
+
+
+
+  input[type=date], input[type=time], input[type=datetime-local], input[type=month]
+    -webkit-appearance: textfield
+    -moz-appearance: textfield
+    line-height: inherit
+
+  .form-control
+    &::-webkit-input-placeholder
+      color: $gray-light
+
+  .pointer
+    cursor: pointer
+
+  hr.spacer
+    border: none
+    margin: 0.5em 0
+    line-height: 0
+
+  .scrollable
+    overflow-y: auto
+    -webkit-overflow-scrolling: touch
+
+  table
+    font-size: 12px 
+
+    &.table-condensed
+      td, th 
+        padding: 5px 3px 
+
