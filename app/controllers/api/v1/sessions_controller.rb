@@ -2,7 +2,7 @@ module Api
   module V1
     class SessionsController < Devise::SessionsController
       before_action :authenticate_user!, :except => [:create]
-      # before_action :ensure_params_exist, :except => [:destroy]
+      before_action :ensure_params_exist, :except => [:destroy]
       
       respond_to :json
 

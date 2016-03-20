@@ -4,7 +4,7 @@
 window.$                        = require 'jquery'
 window._                        = require 'underscore'
 window.Backbone                 = require 'backbone'
-# window.React                    = require 'react'
+window.React                    = require 'react'
 window.ReactDOM                 = require 'react-dom'
 window.backboneCollectionMixin  = require './mixins/backbone_collection_mixin.cjsx'
 window.backboneModelMixin       = require './mixins/backbone_model_mixin.cjsx'
