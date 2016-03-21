@@ -9,14 +9,12 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'pg'
 
+# autentication and authorisation
 gem 'activeadmin', github: 'activeadmin'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'cancancan', '~> 1.10'
 gem 'devise'
-gem 'simple_form', '~> 3.1.0'
-
-gem 'react-rails', '~> 1.0.0'
-gem 'sprockets-coffee-react', '~> 3.0.1'
-
-gem 'bower-rails', '~> 0.9.2'
+gem 'devise-token_authenticatable'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'

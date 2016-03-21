@@ -56,7 +56,11 @@ gulp.task 'clean', ->
 gulp.task 'sass', ->
   gulp.src './app-frontend/style/app.sass'
     .pipe sourcemaps.init()
-    .on('error', sass.logError)
+      .pipe sass(
+        loadPath: [
+          config.sassPath
+        ]
+      ).on('error', sass.logError)
     .pipe sourcemaps.write('./maps')
     .pipe gulp.dest('./public/app/assets')
 

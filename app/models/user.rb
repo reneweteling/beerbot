@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  devise :database_authenticatable, :validatable
+  devise :database_authenticatable, :validatable, :token_authenticatable
 
   has_many :beers, dependent: :destroy
   

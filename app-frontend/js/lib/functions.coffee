@@ -33,6 +33,13 @@ String::toUnderscore = ->
   @replace /([A-Z])/g, ($1) ->
     '_' + $1.toLowerCase()
 
+String::isJson = ->
+  try
+    JSON.parse @
+    true
+  catch
+    false
+
 window.addEventListener 'load', (e) ->
   window.applicationCache.addEventListener 'updateready', (e) ->
     console.log window.applicationCache.status

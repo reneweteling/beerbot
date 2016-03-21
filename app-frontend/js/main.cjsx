@@ -8,12 +8,13 @@ window.React                    = require 'react'
 window.ReactDOM                 = require 'react-dom'
 window.backboneCollectionMixin  = require './mixins/backbone_collection_mixin.cjsx'
 window.backboneModelMixin       = require './mixins/backbone_model_mixin.cjsx'
+require './lib/functions.coffee'
 
 #####################################
 # Requirering our elements
 # 
 window.App                            = require './pages/layout/app.cjsx'
-window.Router                         = new (require './lib/router.coffee')
+window.Router                         = new (require './lib/router.cjsx')
 window.UserCollection                 = new (require './collections/user.coffee')
 window.CurrentUser                    = new (require './models/session.coffee')
 
@@ -45,11 +46,8 @@ $ ->
     
   # ensure loggedin
   Router.bind 'all', (routeevent,route) ->
-    fabric.Answers.sendScreenView(route) if route? and fabric?
     unless CurrentUser.signedIn()
       @navigate '/login', {trigger: true}
-    else unless CurrentUser.project()?
-      @navigate '/projects', {trigger: true}
-
+    
   # redirect to login
   Router.navigate '/login', {trigger: true} unless CurrentUser.signedIn()
