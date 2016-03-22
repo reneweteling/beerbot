@@ -30,7 +30,7 @@ And you guessed it. Its an SPA to count to keep track of those pesky beers. They
 * bin/bundle
 * bin/rake db:create db:migrate db:seed
 * bin/rails s
-* go to http://localhost:3000 for the SPA
+* go to http://localhost:3000 for the SPA  
 * go to http://localhost:3000/admin for the admin interface
 
 #### Credentials dev environment
