@@ -18,8 +18,6 @@ gem 'devise-token_authenticatable'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
-  gem 'rails-assets-react-router'
-  gem 'rails-assets-fluxxor'
 end
 
 group :development do

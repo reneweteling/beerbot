@@ -13,6 +13,7 @@ require './lib/functions.coffee'
 #####################################
 # Requirering our elements
 # 
+window.apiUrl                         = '/api/v1/'
 window.App                            = require './pages/layout/app.cjsx'
 window.Router                         = new (require './lib/router.cjsx')
 window.UserCollection                 = new (require './collections/user.coffee')

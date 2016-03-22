@@ -185,9 +185,7 @@ GEM
       sprockets-rails
     rails-assets-bootstrap-sass (3.3.5)
       rails-assets-jquery (>= 1.9.0)
-    rails-assets-fluxxor (1.7.3)
     rails-assets-jquery (2.1.4)
-    rails-assets-react-router (0.13.4)
     rails-deprecated_sanitizer (1.0.3)
       activesupport (>= 4.2.0.alpha)
     rails-dom-testing (1.0.7)
@@ -279,8 +277,6 @@ DEPENDENCIES
   rack-cors
   rails (= 4.2.4)
   rails-assets-bootstrap-sass!
-  rails-assets-fluxxor!
-  rails-assets-react-router!
   rails_12factor
   sass-rails
   slim-rails
