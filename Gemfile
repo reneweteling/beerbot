@@ -35,4 +35,5 @@ end
 group :production do 
   gem 'rails_12factor'
   gem 'appsignal', '~> 0.12.rc'
+  gem 'puma'
 end
