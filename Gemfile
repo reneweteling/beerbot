@@ -15,6 +15,7 @@ gem 'rack-cors', :require => 'rack/cors'
 gem 'cancancan', '~> 1.10'
 gem 'devise'
 gem 'devise-token_authenticatable'
+gem 'mini_magick'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
