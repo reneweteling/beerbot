@@ -3,7 +3,7 @@ namespace :heroku do
   task :app do 
     ENV["FROM_APP"] ||= 'beerbot-production'
     ENV["TO_APP"] ||= 'beerbot-dev'
-    # raise "Noooooo dont overwrite production!!" if ENV["TO_APP"] == 'beerbot-production'
+    raise "Noooooo dont overwrite production!!" if ENV["TO_APP"] == 'beerbot-production'
   end
   
   task :capture => 'heroku:app' do  
