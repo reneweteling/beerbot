@@ -11,6 +11,7 @@
     "browserify-incremental": "^3.0.1",
     "coffee-reactify": "^4.0.0",
     "coffee-script": "^1.10.0",
+    "d3": "^3.5.16",
     "del": "^2.2.0",
     "fastclick": "^1.0.6",
     "gulp": "^3.9.1",
