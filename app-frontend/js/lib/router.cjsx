@@ -2,6 +2,7 @@ module.exports = Backbone.Router.extend
   routes:
     ''                                      : 'root'
     'index'                                 : 'index'
+    'stats'                                 : 'stats'
     'login'                                 : 'login'
     'logout'                                : 'login'
     '*path'                                 : 'notFound'
@@ -16,6 +17,10 @@ module.exports = Backbone.Router.extend
   index: ->
     Index = require('../pages/index.cjsx')
     @content = <Index collection={UserCollection} />
+
+  # stats: ->
+  #   Stats = require('../pages/stats.cjsx')
+  #   @content = <Stats collection={UserCollection} />
 
   notFound: -> 
     @content = <div className="container">

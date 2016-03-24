@@ -18,6 +18,7 @@ window.App                            = require './pages/layout/app.cjsx'
 window.Router                         = new (require './lib/router.cjsx')
 window.UserCollection                 = new (require './collections/user.coffee')
 window.CurrentUser                    = new (require './models/session.coffee')
+window.AppModel                       = new Backbone.Model()
 
 #####################################
 # Ajax config
@@ -41,7 +42,7 @@ $(document).ajaxError (event, jqxhr, settings, thrownError) ->
 $ ->
   require('fastclick')(document.body)
 
-  ReactDOM.render( <App router={Router} />, document.getElementById('app') )
+  ReactDOM.render( <App router={Router} model={AppModel} />, document.getElementById('app') )
   Backbone.history.start 
     pushState: false
     

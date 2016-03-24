@@ -18,6 +18,8 @@ module.exports = React.createClass
     amount = amount + user.get('transaction') if user.get 'transaction'
     user.set 'transaction', amount
 
+    AppModel.set 'text', amount
+
     @setState
       active: user
     
@@ -27,27 +29,19 @@ module.exports = React.createClass
     self = @
 
     buttons = _.map @state.items, (user) ->
+      active = self.state.active == user
 
-      <div className={ if self.state.active == user then 'user active' else 'user'} key={user.id} onClick={self.handleBeer.bind(self, 1, user)} >
-        
-        <div className="left">
-          <button type="button" className="btn btn-default btn-lg">
-            <span className="glyphicon glyphicon-eur" aria-hidden="true"></span>
-          </button>
-        </div>
-        
-        <div className="center">
-          {user.get('first_name')}
-        </div>
+      <div className={ if active then 'user active' else 'user'} key={user.id} onClick={self.handleBeer.bind(self, 1, user)} >
+        <p>{ user.get('first_name') }</p>
+        {
+          if active
+            <p>Pakt {user.get('transaction')} pils</p>
+        }
 
-        <div className="right">
-          <button type="button" className="btn btn-default btn-lg">
-            <span className="glyphicon glyphicon-glass" aria-hidden="true"></span>
-          </button>
-        </div>
+        
       </div>
     
-    <div className="users">{buttons}</div>
+    <div className="content">{buttons}</div>
 
 
    

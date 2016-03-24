@@ -5,14 +5,20 @@ module.exports = React.createClass
     @callback = ( ->
       @forceUpdate()
     ).bind(@)
-    @props.router.on("route", @callback)
+    @props.router.on "route", @callback
+    @props.model.on "all", @callback
     
   componentWillUnmount: ->
-    @props.router.off("route", @callback)
+    @props.router.off "route", @callback
+    $(@props.vars).off "all", @callback
 
   handleClick: (path, e) ->
     e.preventDefault()
     Router.navigate "/#{path}", {trigger: true} 
+
+  componentWillReceiveProps: (nextProps) ->
+    console.log nextProps
+    
   render: ->
     self = @
 
@@ -24,7 +30,12 @@ module.exports = React.createClass
 
     <div className="flex-vert-container">
       <div className="flex-header">
-        <div className="logo">BEER<br/>BOT</div>
+        <div className="logo">
+          BEER<br/>BOT
+          {
+            @props.model.get 'text'
+          }
+        </div>
         <ul className="navigation">
           {
             if CurrentUser.signedIn()
