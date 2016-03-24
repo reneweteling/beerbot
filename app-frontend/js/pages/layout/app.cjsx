@@ -24,7 +24,7 @@ module.exports = React.createClass
 
     <div className="flex-vert-container">
       <div className="flex-header">
-        <div className="logo"></div>
+        <div className="logo">BEER<br/>BOT</div>
         <ul className="navigation">
           {
             if CurrentUser.signedIn()

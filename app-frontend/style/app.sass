@@ -1,3 +1,7 @@
+$font-size-base:          24px !default;
+$font-family-sans-serif:  Helvetica
+$font-family-serif:       Georgia
+
 @import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"
 
 $beer: #f4be16
@@ -9,8 +13,12 @@ html, body
 
 html, body, a, td, tr
   color: black
-  font-family: Helvetica
-  font-size: 18px
+  padding: 0
+  margin: 0
+
+*
+  transition: all 0.3s ease
+
 
 .full-height
   height: 100%
@@ -23,13 +31,19 @@ html, body, a, td, tr
   background: $beer
 
   .flex-header
-    height: 150px
-    background: white
+    flex-basis: 174px
+    background: url(images/header-bg.png)
+    background-size: cover
+    background-repeat: no-repeat
 
     .logo
       margin: 10px
-      height: 130px
-      width: 130px
+      height: 90px
+      margin: 20px 0 0 30px
+      padding: 28px 0 0 85px
+      font-weight: bold
+      font-size: 26px
+      line-height: 22px
       display: inline-block
       background: url(images/logo.png)
       background-size: contain
@@ -50,6 +64,7 @@ html, body, a, td, tr
 
         a
           padding: 10px
+          font-size: 24px
           &:hover
             text-decoration: none
             color: inherit
@@ -63,6 +78,24 @@ html, body, a, td, tr
       flex-wrap: wrap
 
       .user
-        margin: 20px auto
+        display: flex
+        flex-grow: 1
         flex-basis: 200px
-        border: 1px solid red 
+        margin: 10px 10px
+        padding: 10px
+        border-radius: 3px
+        box-shadow: 0px 0px 20px rgba(0,0,0,.3)
+
+        &.active
+          .left, .right
+            opacity: 1
+
+
+        .left, .right
+          opacity: 0
+          flex-basis: 64px
+
+        .center
+          flex-grow: 1
+          text-align: center
+        
