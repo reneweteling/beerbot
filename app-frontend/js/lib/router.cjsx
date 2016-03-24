@@ -18,9 +18,9 @@ module.exports = Backbone.Router.extend
     Index = require('../pages/index.cjsx')
     @content = <Index collection={UserCollection} />
 
-  # stats: ->
-  #   Stats = require('../pages/stats.cjsx')
-  #   @content = <Stats collection={UserCollection} />
+  stats: ->
+    Stats = require('../pages/stats.cjsx')
+    @content = <Stats collection={UserCollection} />
 
   notFound: -> 
     @content = <div className="container">

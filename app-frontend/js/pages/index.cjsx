@@ -15,15 +15,21 @@ module.exports = React.createClass
       remove: false
 
   handleBeer: (amount, user) ->
+    self = @
+
     amount = amount + user.get('transaction') if user.get 'transaction'
     user.set 'transaction', amount
 
-    AppModel.set 'text', amount
-
     @setState
       active: user
+    AppModel.set 'text', "#{user.to_s()} heeft #{amount} pils gepakt!"
     
-
+    clearTimeout @time if @time
+    @time = setTimeout ->
+      self.setState
+        active: null
+      AppModel.unset 'text'
+    , 2000
     
   render: ->
     self = @
@@ -33,15 +39,6 @@ module.exports = React.createClass
 
       <div className={ if active then 'user active' else 'user'} key={user.id} onClick={self.handleBeer.bind(self, 1, user)} >
         <p>{ user.get('first_name') }</p>
-        {
-          if active
-            <p>Pakt {user.get('transaction')} pils</p>
-        }
-
-        
       </div>
     
     <div className="content">{buttons}</div>
-
-
-   

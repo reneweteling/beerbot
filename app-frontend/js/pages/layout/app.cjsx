@@ -15,25 +15,24 @@ module.exports = React.createClass
   handleClick: (path, e) ->
     e.preventDefault()
     Router.navigate "/#{path}", {trigger: true} 
-
-  componentWillReceiveProps: (nextProps) ->
-    console.log nextProps
-    
+      
   render: ->
     self = @
 
     links = 
       'drink': 'DRINK!'
-      'buy': 'BUY!'
       'stats': 'STATS'
       'index': 'OVERVIEW'
 
     <div className="flex-vert-container">
       <div className="flex-header">
         <div className="logo">
-          BEER<br/>BOT
           {
-            @props.model.get 'text'
+            txt = @props.model.get 'text'
+            if txt?
+              txt
+            else
+              <span>BEER<br/>BOT</span>
           }
         </div>
         <ul className="navigation">
