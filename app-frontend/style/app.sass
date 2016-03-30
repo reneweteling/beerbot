@@ -71,10 +71,24 @@ html, body, a, td, tr
     flex-grow: 1
     overflow: auto
 
-    .content
-      display: flex
-      flex-direction: row
-      flex-wrap: wrap
+    .stats-container
+
+    .index-container
+      table
+        th 
+          .glyphicon
+            display: none
+          &.active
+            &.asc .glyphicon.glyphicon-arrow-down
+              display: inline-block
+            &.desc .glyphicon.glyphicon-arrow-up 
+              display: inline-block
+
+    .drink-container
+      &.content
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
 
       .user
         transition: all .2s ease-in-out

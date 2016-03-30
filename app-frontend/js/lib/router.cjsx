@@ -3,6 +3,7 @@ module.exports = Backbone.Router.extend
     ''                                      : 'root'
     'index'                                 : 'index'
     'stats'                                 : 'stats'
+    'drink'                                 : 'drink'
     'login'                                 : 'login'
     'logout'                                : 'login'
     '*path'                                 : 'notFound'
@@ -21,6 +22,10 @@ module.exports = Backbone.Router.extend
   stats: ->
     Stats = require('../pages/stats.cjsx')
     @content = <Stats collection={UserCollection} />
+
+  drink: ->
+    Drink = require('../pages/drink.cjsx')
+    @content = <Drink collection={UserCollection} />
 
   notFound: -> 
     @content = <div className="container">

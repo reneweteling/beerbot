@@ -51,7 +51,7 @@ module.exports = React.createClass
     
     x = (d) -> d.index
     yTickFormat = d3.format(".2s")
-    <div className="content">
+    <div className="content stats-container">
       <BarStackChart
         height={400}
         showXGrid= {false}
