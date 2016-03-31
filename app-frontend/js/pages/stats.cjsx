@@ -23,5 +23,5 @@ module.exports = React.createClass
         
 
     <div className="content stats-container">
-      <Chart chartType="BarChart" width={"100%"} height={"600px"} data={@state.items} options={options} graph_id="chart" />
+      <Chart chartType="BarChart" width={"100%"} height={"440px"} data={@state.items} options={options} graph_id="chart" />
     </div>

@@ -24,7 +24,7 @@ module.exports = React.createClass
 
   render: ->
     self = @
-    <div className="table-responsive index-container">
+    <div className="index-container">
       <table className="table table-striped table-condensed">
         <thead>
           <tr>
