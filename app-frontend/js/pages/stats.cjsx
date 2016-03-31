@@ -20,8 +20,13 @@ module.exports = React.createClass
       isStacked: true
       bar: 
         groupWidth: '75%'
+      chartArea: 
+        left: 50
+        top: 0
+        width: '80%'
+        height: '85%'
         
 
     <div className="content stats-container">
-      <Chart chartType="BarChart" width={"100%"} height={"440px"} data={@state.items} options={options} graph_id="chart" />
+      <Chart chartType="BarChart" width={"100%"} height={"400px"} data={@state.items} options={options} graph_id="chart" />
     </div>
