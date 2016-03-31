@@ -9,18 +9,16 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'pg'
 
+# autentication and authorisation
 gem 'activeadmin', github: 'activeadmin'
+gem 'rack-cors', :require => 'rack/cors'
+gem 'cancancan', '~> 1.10'
 gem 'devise'
-gem 'simple_form', '~> 3.1.0'
+gem 'devise-token_authenticatable'
+gem 'mini_magick'
 
-gem 'react-rails', '~> 1.0.0'
-gem 'sprockets-coffee-react', '~> 3.0.1'
-
-gem 'bower-rails', '~> 0.9.2'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-sass'
-  gem 'rails-assets-react-router'
-  gem 'rails-assets-fluxxor'
 end
 
 group :development do
@@ -36,4 +34,5 @@ end
 group :production do 
   gem 'rails_12factor'
   gem 'appsignal', '~> 0.12.rc'
+  gem 'puma'
 end

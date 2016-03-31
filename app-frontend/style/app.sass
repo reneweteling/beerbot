@@ -1,0 +1,118 @@
+$font-size-base:          24px !default;
+$font-family-sans-serif:  Helvetica
+$font-family-serif:       Georgia
+
+@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap"
+
+$beer: #f4be16
+
+// Fasteclick
+html, body 
+  -webkit-tap-highlight-color: transparent
+  height: 100%
+
+html, body, a, td, tr
+  color: black
+  padding: 0
+  margin: 0
+
+.full-height
+  height: 100%
+
+.flex-vert-container
+  height: 100%
+  display: flex
+  flex-direction: column
+  
+  background: $beer
+
+  .flex-header
+    flex-basis: 150px
+    background: url(images/header-bg.png)
+    background-size: cover
+    background-repeat: no-repeat
+
+    .logo
+      margin: 10px
+      height: 90px
+      margin: 20px 0 0 30px
+      padding: 28px 0 0 85px
+      font-weight: bold
+      font-size: 26px
+      line-height: 22px
+      display: inline-block
+      background: url(images/logo.png)
+      background-size: contain
+      background-repeat: no-repeat
+
+    ul.navigation
+      float: right
+      margin: 50px 20px 0 0 
+      
+      li 
+        display: inline-block
+        
+        &.active
+          a
+            font-weight: bold
+            text-decoration: none
+            color: inherit
+
+        a
+          padding: 10px
+          font-size: 24px
+          &:hover
+            text-decoration: none
+            color: inherit
+
+  .flex-body
+    flex-grow: 1
+    overflow: auto
+
+    .stats-container
+      height: 100%
+
+    .index-container
+      table
+        th, td
+          padding: 0px 5px
+          font-size: 90%
+        th 
+          .glyphicon
+            display: none
+          &.active
+            &.asc .glyphicon.glyphicon-arrow-down
+              display: inline-block
+            &.desc .glyphicon.glyphicon-arrow-up 
+              display: inline-block
+
+    .drink-container
+      &.content
+        display: flex
+        flex-direction: row
+        flex-wrap: wrap
+
+      .user
+        transition: all .2s ease-in-out
+        flex-grow: 1
+        flex-basis: 180px
+        text-align: center
+        margin: 10px
+        padding: 8px
+        border-radius: 3px
+        box-shadow: 0px 0px 20px rgba(0,0,0,.3)
+
+        &.active
+          transform: scale(1.1)
+
+        .title
+          display: block
+          font-weight: bold
+        .total, .transaction
+          display: inline-block
+          padding: 2px 5px
+          &.red
+            color: red
+            
+        .transaction
+        

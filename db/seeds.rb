@@ -15,7 +15,7 @@ if Rails.env.development?
 
   User.all.each do |u|
     50.times do
-      u.beers.create!(amount: rand(-5..6), creator_id: 1, created_at: Time.at(Time.zone.now.to_i - rand(0..60).days))
+      u.beers.create!(amount: rand(-5..6), created_at: Time.at(Time.zone.now.to_i - rand(0..60).days))
     end
   end
 

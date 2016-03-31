@@ -6,5 +6,7 @@
 !/log/.keep
 /tmp
 
+/public/app
 /public/assets
 /public/uploads
+/node_modules
