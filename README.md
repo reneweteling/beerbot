@@ -9,7 +9,7 @@ http://beerbot.weteling.com/
 # Staging
 http://beerbot-dev.weteling.com/
 
-## Usage
+## Usage  
 
 * clone repo
 * bin/bundle
