@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :validatable, :token_authenticatable
 
   has_many :beers, dependent: :destroy
+  has_many :transactions, dependent: :destroy
   
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, confirmation: true

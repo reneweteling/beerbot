@@ -25,20 +25,20 @@ module Api
         render p
       end
 
-      def update
-        if @model.update(model_params)
-          p = {json: @model, root: false}
-        else
-          p = {json: @model.errors, status: :unprocessable_entity}
-        end
+      # def update
+      #   if @model.update(model_params)
+      #     p = {json: @model, root: false}
+      #   else
+      #     p = {json: @model.errors, status: :unprocessable_entity}
+      #   end
 
-        render p
-      end
+      #   render p
+      # end
 
-      def destroy
-        @model.destroy
-        head :no_content
-      end
+      # def destroy
+      #   @model.destroy
+      #   head :no_content
+      # end
 
       private
       def set_class
@@ -54,7 +54,7 @@ module Api
       end
 
       def model_params
-        params.permit(@class.column_names).merge!(default_model_params)
+        params.permit(@class.column_names)
       end
       
     end

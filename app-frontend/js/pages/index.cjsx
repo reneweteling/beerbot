@@ -29,7 +29,7 @@ module.exports = React.createClass
         <thead>
           <tr>
             {
-              _.map {first_name: 'Name', balance: 'Unpaid dues', beer_consumed: 'Consumed', beer_contributed: 'Contributed', beer_total: 'Total'}, (v, k) ->
+              _.map {first_name: 'Name', transaction_total: 'Unpaid dues', beer_consumed: 'Consumed', beer_bought: 'Contributed', beer_total: 'Total'}, (v, k) ->
                 <th 
                   key="key-#{k}" 
                   className={"#{self.state.direction} #{if self.state.sort == k then 'active' else '' }"} 
@@ -47,7 +47,7 @@ module.exports = React.createClass
             _.map @state.items, (user) ->
               <tr key={"user-#{user.id}"}>
                 <td>{user.get('first_name')}</td>
-                <td>{user.get('balance')}</td>
+                <td>{user.get('transaction_total')}</td>
                 <td>{user.get('beer_consumed')}</td>
                 <td>{user.get('beer_bought')}</td>
                 <td>{user.get('beer_total')}</td>

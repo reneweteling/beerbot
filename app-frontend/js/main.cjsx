@@ -17,8 +17,10 @@ window.apiUrl                         = '/api/v1/'
 window.App                            = require './pages/layout/app.cjsx'
 window.Router                         = new (require './lib/router.cjsx')
 window.UserCollection                 = new (require './collections/user.coffee')
+window.BeerCollection                 = new (require './collections/beer.coffee')
 window.CurrentUser                    = new (require './models/session.coffee')
 window.AppModel                       = new Backbone.Model()
+window.StatsData                      = []
 
 #####################################
 # Ajax config

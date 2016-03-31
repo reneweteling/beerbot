@@ -16,8 +16,6 @@ html, body, a, td, tr
   padding: 0
   margin: 0
 
-
-
 .full-height
   height: 100%
 
@@ -72,6 +70,7 @@ html, body, a, td, tr
     overflow: auto
 
     .stats-container
+      height: 100%
 
     .index-container
       table
@@ -102,8 +101,15 @@ html, body, a, td, tr
 
         &.active
           transform: scale(1.1)
-          
-        .center
-          flex-grow: 1
-          text-align: center
+
+        .title
+          display: block
+          font-weight: bold
+        .total, .transaction
+          display: inline-block
+          padding: 5px
+          &.red
+            color: red
+            
+        .transaction
         

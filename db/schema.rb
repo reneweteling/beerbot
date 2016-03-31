@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160321183709) do
+ActiveRecord::Schema.define(version: 20160331062840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,31 +33,42 @@ ActiveRecord::Schema.define(version: 20160321183709) do
 
   create_table "beers", force: :cascade do |t|
     t.integer  "user_id",                null: false
-    t.integer  "creator_id",             null: false
     t.integer  "amount",     default: 0, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
-  add_index "beers", ["creator_id"], name: "index_beers_on_creator_id", using: :btree
   add_index "beers", ["user_id"], name: "index_beers_on_user_id", using: :btree
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer  "user_id",                    null: false
+    t.float    "money",      default: 0.0,   null: false
+    t.integer  "amount",     default: 0,     null: false
+    t.boolean  "paid",       default: false, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
+  add_index "transactions", ["user_id"], name: "index_transactions_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
     t.string   "slack_username"
     t.integer  "role"
-    t.integer  "beer_consumed",        default: 0,  null: false
-    t.integer  "beer_bought",          default: 0,  null: false
-    t.integer  "beer_total",           default: 0,  null: false
-    t.string   "email",                default: "", null: false
-    t.string   "encrypted_password",   default: "", null: false
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.integer  "beer_consumed",        default: 0,   null: false
+    t.integer  "beer_bought",          default: 0,   null: false
+    t.integer  "beer_total",           default: 0,   null: false
+    t.string   "email",                default: "",  null: false
+    t.string   "encrypted_password",   default: "",  null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.string   "authentication_token"
+    t.float    "transaction_total",    default: 0.0, null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   add_foreign_key "beers", "users"
+  add_foreign_key "transactions", "users"
 end
