@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
     self.beer_bought = beers.bought.sum(:amount)
     self.beer_consumed = -1 * beers.consumed.sum(:amount)
     self.beer_total = beer_bought - beer_consumed
+    self.transaction_total = self.transactions.balance.sum(:money)
     save!
   end
 end
