@@ -25,4 +25,10 @@ ActiveAdmin.register Beer do
     column :created_at
   end
 
+  controller do
+    def scoped_collection
+      super.includes :user
+    end
+  end
+
 end

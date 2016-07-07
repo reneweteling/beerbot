@@ -1,9 +1,8 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :validatable, :token_authenticatable
 
-  has_many :beers, dependent: :destroy
-  has_many :transactions, dependent: :destroy
-  
+  has_many :beers, dependent: :restrict_with_error
+
   validates :password, :password_confirmation, presence: true, on: :create
   validates :password, confirmation: true
 
@@ -15,7 +14,6 @@ class User < ActiveRecord::Base
     self.beer_bought = beers.bought.sum(:amount)
     self.beer_consumed = -1 * beers.consumed.sum(:amount)
     self.beer_total = beer_bought - beer_consumed
-    self.transaction_total = self.transactions.balance.sum(:money)
     save!
   end
 end
