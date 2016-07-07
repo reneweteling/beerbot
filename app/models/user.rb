@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   devise :database_authenticatable, :validatable, :token_authenticatable
 
-  # Before destroy, Checking associated
   has_many :beers, dependent: :restrict_with_error
 
   validates :password, :password_confirmation, presence: true, on: :create

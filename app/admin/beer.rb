@@ -25,7 +25,6 @@ ActiveAdmin.register Beer do
     column :created_at
   end
 
-  # Adding N + 1 for Beer index method.
   controller do
     def scoped_collection
       super.includes :user

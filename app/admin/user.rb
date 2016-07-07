@@ -21,16 +21,6 @@ ActiveAdmin.register User do
       end
       super
     end
-
-    def destroy
-      # Before destroy, Checking associated
-      user = User.find(params[:id])
-      if user.destroy
-        super
-      else
-        redirect_to admin_user_path(user), :alert => "#{user.errors.messages[:base].last}"
-      end
-    end
   end
 
 end
