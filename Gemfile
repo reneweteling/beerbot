@@ -24,12 +24,23 @@ end
 group :development do
   gem 'guard-livereload', '~> 2.4', require: false
   gem 'xray-rails'
-  gem 'byebug'
   gem 'spring'
   gem 'quiet_assets'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+end
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.5'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'shoulda-matchers'
+  gem 'byebug'
+end
+
+group :test do
+  gem 'database_cleaner'
 end
 
 group :production do 
