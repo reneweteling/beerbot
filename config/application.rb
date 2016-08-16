@@ -25,6 +25,12 @@ module Beerbot
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
 
+    # provide the custom directory of the factories
+    config.generators do |g|
+        g.factory_girl dir: 'spec/factories'
+    end
+
+    # provides support for Cross-Origin Resource Sharing (CORS) for Rack compatible web applications
     config.middleware.insert_before 0, "Rack::Cors" do
       allow do
         origins '*'
