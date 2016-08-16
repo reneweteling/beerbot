@@ -1,0 +1,12 @@
+default: &defaults
+  SLACK_API_TOKEN: "xoxp-68890467382-68899994631-68893956256-60171994ec"
+  # Your app's name
+  name: "Beerbot"
+
+development:
+  <<: *defaults
+  active: true
+
+production:
+  <<: *defaults
+  active: true
